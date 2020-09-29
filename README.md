@@ -53,7 +53,7 @@ has_one: item
 | ---------------  | ------------- | ------------                   |
 | purchase         | references    | nill: false, foreign_key: true |
 
-has_one :purchase
+belongs_to :purchase
 
 # 商品購入機能-クレジット情報-
 
@@ -66,4 +66,4 @@ has_one :purchase
 
 belongs_to: user
 belongs_to: item
-belongs_to: addresse
+has_one: addresse
