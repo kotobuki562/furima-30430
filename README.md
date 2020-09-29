@@ -31,37 +31,39 @@ has_many: purchases
 | shipping_date_id   | integer       | nill: false                   |
 | price              | integer       | nill: false                   |
 | ---------------    | ------------- | ------------                  |
-| user_id            | references    | nill: false,foreign_key: true |
+| user               | references    | nill: false,foreign_key: true |
 
 image...ActiveStorage で実装
 
 belongs_to: user
+has_one: item
 
 # 商品購入機能-配送先情報-
 
 - addresses テーブル
 
-| Column              | Type          | Options                        |
-| ------------------- | ------------- | ------------------------------ |
-| post_coade_id       | string        | nill: false                    |
-| prefectures_id      | integer       | nill: false                    |
-| municipality_id     | string        | nill: false                    |
-| address_id          | integer       | nill: false                    |
-| tellphone_number_id | string        | nill: false                    |
-| building_id         | string        |                                |
-| ---------------     | ------------- | ------------                   |
-| purchase_id         | references    | nill: false, foreign_key: true |
+| Column           | Type          | Options                        |
+| ---------------- | ------------- | ------------------------------ |
+| post_coade       | string        | nill: false                    |
+| prefectures_id   | integer       | nill: false                    |
+| municipality     | string        | nill: false                    |
+| address          | string        | nill: false                    |
+| tellphone_number | string        | nill: false                    |
+| building         | string        |                                |
+| ---------------  | ------------- | ------------                   |
+| purchase         | references    | nill: false, foreign_key: true |
 
-belongs_to :purchase
+has_one :purchase
 
 # 商品購入機能-クレジット情報-
 
 - purchases テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user_id | references | nill: false, foreign_key: true |
-| item_id | references | nill: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | nill: false, foreign_key: true |
+| item   | references | nill: false, foreign_key: true |
 
 belongs_to: user
-has_one: addresse
+belongs_to: item
+belongs_to: addresse
