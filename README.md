@@ -59,7 +59,6 @@ has_one: purchase
 | user             | references    | nill: false  |
 
 belongs_to: item
-belongs_to: user
 
 # 商品購入機能-クレジット情報-
 
