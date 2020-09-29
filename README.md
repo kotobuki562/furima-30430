@@ -36,7 +36,7 @@ has_many: purchases
 image...ActiveStorage で実装
 
 belongs_to: user
-has_one: item
+has_one :purchase
 
 # 商品購入機能-配送先情報-
 
