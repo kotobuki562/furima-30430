@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
-  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w/
+  VALID_NAME_REGEX =/\A[ぁ-んァ-ン一-龥]+\z/
+  VALID_NAME_FURIGANA_REGEX = /\A[ァ-ン]+\z/
   validates :password, presence: true,
             format: { with: VALID_PASSWORD_REGEX}
 
@@ -10,9 +12,18 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
         validates :nickname,presence: true
-        validates :family_name,presence: true
-        validates :first_name,presence: true
-        validates :family_name_furigana,presence: true
-        validates :first_name_furigana,presence: true
+        
+        validates :family_name,presence: true,
+        format: { with: VALID_NAME_REGEX}
+
+        validates :first_name,presence: true,
+        format: { with: VALID_NAME_REGEX}
+
+        validates :family_name_furigana,presence: true,
+        format: { with: VALID_NAME_FURIGANA_REGEX}
+
+        validates :first_name_furigana,presence: true,
+        format: { with: VALID_NAME_FURIGANA_REGEX}
+
         validates :birthday,presence: true
 end
