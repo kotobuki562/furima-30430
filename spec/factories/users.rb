@@ -4,7 +4,7 @@ FactoryBot.define do
     email { 'aaa@aaa' }
     password { '111aaa' }
     password_confirmation { '111aaa' }
-    family_name {'記事科'}
+    family_name { '記事科'}
     first_name {'亜門'}
     family_name_furigana {'キジカ'}
     first_name_furigana {'アモン'}

@@ -125,7 +125,6 @@ RSpec.describe User, type: :model do
     end
 
     it 'first_name_furiganaが英字だと登録できないこと' do
-      
       @user.first_name_furigana = 'sugita'
       @user.valid?
       expect(@user.errors.full_messages).to include('First name furigana is invalid')
@@ -201,7 +200,7 @@ RSpec.describe User, type: :model do
     it 'emailに@がなければ登録できないこと' do
       @user.email = 'aaa1aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid')
     end
 
     it '重複したemailが存在する場合登録できないこと' do
