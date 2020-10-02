@@ -10,17 +10,16 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :image
-    validates :name,length: {maximum: 40}
-    validates :text,length: {maximum: 1000}
-    validates :category_id,numericality: { other_than: 1 }
-    validates :state_id,numericality: { other_than: 1 }
-    validates :delivery_charge_id,numericality: { other_than: 1 }
-    validates :shipping_place_id,numericality: { other_than: 1 }
-    validates :shipping_date_id,numericality: { other_than: 1 }
+    validates :name, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
+    validates :category_id, numericality: { other_than: 1 }
+    validates :state_id, numericality: { other_than: 1 }
+    validates :delivery_charge_id, numericality: { other_than: 1 }
+    validates :shipping_place_id, numericality: { other_than: 1 }
+    validates :shipping_date_id, numericality: { other_than: 1 }
 
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 999999999 },
-    format: { with: VALID_PRICE_REGEX }
-
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+                      format: { with: VALID_PRICE_REGEX }
   end
 
   belongs_to :user
