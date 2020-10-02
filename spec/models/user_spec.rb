@@ -29,7 +29,6 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-    
     it 'family_nameが全角の平仮名であれば登録できること' do
       @user.family_name = 'すぎた'
       expect(@user).to be_valid
