@@ -29,6 +29,12 @@ class ItemsController < ApplicationController
     # @item_category.nameでname出力
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   private
 
   def item_params
