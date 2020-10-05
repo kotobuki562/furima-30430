@@ -1,8 +1,17 @@
 class PurchasesController < ApplicationController
+  before_action :move_to_index, except: [:index]
   def index
   end
 
   def create
+    @address_purchase = AddressPurchase.new(purchase_params)
+    if @address_purchase.valid?
+      pay_item
+      @address_purchase.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private
@@ -18,5 +27,9 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 end
