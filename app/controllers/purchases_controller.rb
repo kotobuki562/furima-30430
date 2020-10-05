@@ -2,9 +2,10 @@ class PurchasesController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
+    @item = Item.find(params[:id])
   end
 
-  
+
   def create
     @address_purchase = AddressPurchase.new(purchase_params)
     if @address_purchase.valid?
