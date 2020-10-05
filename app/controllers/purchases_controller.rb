@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :move_to_index, except: [:index]
+
   def index
   end
 
+  
   def create
     @address_purchase = AddressPurchase.new(purchase_params)
     if @address_purchase.valid?
@@ -19,6 +21,7 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:address_purchase).permit(:token,:post_coade,:prefectures_id,:municipality,:address,:tellphone_number,:building)
   end
+  
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
