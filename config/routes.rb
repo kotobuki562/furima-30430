@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'items#index'
   resources :items, only: [:new,:create,:show,:edit,:update,:destroy]
-  resources :purchases, only: [:create]
   get '/purchases/:id', to: 'purchases#index'
+  post '/purchases/:id', to: 'purchases#create'
 end

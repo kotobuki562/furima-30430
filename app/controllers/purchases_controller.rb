@@ -8,6 +8,8 @@ class PurchasesController < ApplicationController
 
 
   def create
+    # binding.pry
+    @item = Item.find(params[:id])
     @address_purchase = AddressPurchase.new(purchase_params)
     if @address_purchase.valid?
       pay_item
