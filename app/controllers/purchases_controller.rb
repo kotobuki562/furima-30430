@@ -6,7 +6,6 @@ class PurchasesController < ApplicationController
     @address_purchase = AddressPurchase.new
   end
 
-
   def create
     # binding.pry
     @item = Item.find(params[:id])
@@ -23,14 +22,15 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:address_purchase).permit(:post_coade,:prefectures_id,:municipality,:address,:tellphone_number,:building).merge(token: params[:token])
+    params.require(:address_purchase).permit(:post_coade,:prefectures_id,:municipality,:address,:tellphone_number,:building).merge(token: params[:token],user_id: current_user.id, item_id: @item.id)
   end
   
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    # binding.pry
     Payjp::Charge.create(
-      # amount: order_params[:price],
+      amount: @item.price,
       card: purchase_params[:token],
       currency:'jpy'
     )
