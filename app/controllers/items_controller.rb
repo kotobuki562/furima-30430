@@ -30,6 +30,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.purchase
+      redirect_to action: :index if current_user
+    end
   end
 
   def update
