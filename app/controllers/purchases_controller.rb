@@ -1,5 +1,4 @@
 class PurchasesController < ApplicationController
-
   def index
     @item = Item.find(params[:id])
     move_to_index
@@ -22,21 +21,19 @@ class PurchasesController < ApplicationController
     end
   end
 
-
   private
 
   def purchase_params
-    params.require(:address_purchase).permit(:post_coade,:prefectures_id,:municipality,:address,:tellphone_number,:building).merge(token: params[:token],user_id: current_user.id, item_id: @item.id)
+    params.require(:address_purchase).permit(:post_coade, :prefectures_id, :municipality, :address, :tellphone_number, :building).merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
-  
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     # binding.pry
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 

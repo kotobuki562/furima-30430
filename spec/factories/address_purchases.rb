@@ -6,8 +6,8 @@ FactoryBot.define do
     municipality { '板橋区' }
     address { '秋下2-3-4' }
     tellphone_number { '09012345678' }
+    building { '横山阿弥陀ビル'}
     association :user
     association :item
-    association :purchase
   end
 end

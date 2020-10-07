@@ -4,7 +4,7 @@ class User < ApplicationRecord
   VALID_NAME_FURIGANA_REGEX = /\A[ァ-ン]+\z/.freeze
 
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
 
   with_options presence: true do
     validates :password,
