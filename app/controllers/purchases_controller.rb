@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: [:index,:create]
+  before_action :set_item, only: [:index,:create,:move_to_index_user]
   before_action :move_to_index, only: [:index,:create]
+  before_action :move_to_index_user, only: [:index,:create]
 
   def index
     if @item.purchase
@@ -41,5 +42,9 @@ class PurchasesController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless user_signed_in?
+  end
+
+  def move_to_index_user
+    redirect_to root_path if current_user.id == @item.user_id
   end
 end
