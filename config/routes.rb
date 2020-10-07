@@ -4,6 +4,4 @@ Rails.application.routes.draw do
   resources :items, only: [:new,:create,:show,:edit,:update,:destroy] do
       resources :purchases, only: [:index,:create]
   end
-  # get '/purchases/:id', to: 'purchases#index'
-  # post '/purchases/:id', to: 'purchases#create'
 end
