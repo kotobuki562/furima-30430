@@ -11,7 +11,7 @@ RSpec.describe AddressPurchase, type: :model do
     expect(@address_purchase).to be_valid
   end
 
-  it 'buildingがなくても購入できないこと' do
+  it 'buildingがなくても購入できること' do
     @address_purchase.building = nil
     expect(@address_purchase).to be_valid
   end
