@@ -22,6 +22,7 @@ class PurchasesController < ApplicationController
     end
   end
 
+
   private
 
   def purchase_params

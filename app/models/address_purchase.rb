@@ -4,11 +4,11 @@ class AddressPurchase
 
   with_options presence: true do
     validates :token
-    validates :post_coade
+    validates :post_coade,format: {with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefectures_id,numericality: { other_than: 1 }
     validates :municipality
     validates :address
-    validates :tellphone_number
+    validates :tellphone_number,format: {with: /\A[0-9]+\z/ },length: { maximum: 11 }
   end
 
   def save
