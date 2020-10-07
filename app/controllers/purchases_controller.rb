@@ -1,9 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index,:create]
-
+  before_action :move_to_index, only: [:index,:create]
 
   def index
-    move_to_index
     if @item.purchase
       redirect_to root_path if current_user
     end
