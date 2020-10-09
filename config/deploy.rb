@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "futima-30430"
+set :application, "furima-30430"
 set :repo_url, "git@github.com:kotobuki562/furima-30430.git"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -10,7 +10,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5' #カリキュラム通りに進めた場合、’2.6.5’ です
 
 set :ssh_options, auth_methods: ['publickey'],
-    keys: ['~/.ssh/kotobukey.pem']
+    keys: ['~/.ssh/kotobukey.pem'] 	
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 
