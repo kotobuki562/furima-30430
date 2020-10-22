@@ -11,6 +11,7 @@ RSpec.describe Item, type: :model do
       expect(@item).to be_valid
     end
 
+    
     # ーーーーーーーーーーーー下記バリデーションの検証ーーーーーーーーーーーーー
 
     it 'imageがない場合出品できないこと' do

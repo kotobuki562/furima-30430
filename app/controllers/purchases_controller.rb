@@ -4,11 +4,13 @@ class PurchasesController < ApplicationController
   before_action :move_to_index_user, only: [:index,:create]
 
   def index
-    if @item.purchase
-      redirect_to root_path if current_user
-    end
     @address_purchase = AddressPurchase.new
-  end
+    if @item.purchase
+      if current_user
+        redirect_to root_path
+      end
+    end
+end
 
   def create
     @address_purchase = AddressPurchase.new(purchase_params)
@@ -41,10 +43,14 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
+    unless user_signed_in?
+    redirect_to new_user_session_path
+    end
   end
 
   def move_to_index_user
-    redirect_to root_path if current_user.id == @item.user_id
+    if current_user.id == @item.user_id
+      redirect_to root_path 
+    end
   end
 end

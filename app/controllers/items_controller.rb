@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  
   def show
     # 以下は備忘録として残させてください
     # @item_category = Category.find(@item.category_id)
@@ -30,7 +31,9 @@ class ItemsController < ApplicationController
 
   def edit
     if @item.purchase
-      redirect_to action: :index if current_user
+      if current_user
+        redirect_to action: :index
+      end
     end
   end
 
@@ -61,6 +64,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless user_signed_in?
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end
