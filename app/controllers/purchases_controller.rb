@@ -10,7 +10,7 @@ class PurchasesController < ApplicationController
         redirect_to root_path
       end
     end
-end
+  end
 
   def create
     @address_purchase = AddressPurchase.new(purchase_params)
